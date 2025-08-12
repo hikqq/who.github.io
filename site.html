@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои Социальные Сети</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body{font-family:Arial,sans-serif;background-color:#333;color:white;margin:0;padding:20px}h1{text-align:center}.social-links{display:flex;flex-direction:column;align-items:center;width:100%}.social-link{margin:10px 0;text-decoration:none;color:white;padding:15px;display:flex;align-items:center;justify-content:space-between;border-radius:5px;transition:background-color 0.3s,opacity 0.3s;opacity:0.8;width:100%;max-width:400px}.telegram{background-color:#0088cc}.vk{background-color:#4a76a8}.discord{background-color:#7289da}.discord-server{background-color:#7289da}.twitch{background-color:#9146ff}.youtube{background-color:#ff0000}.tiktok{background-color:#000}.steam{background-color:#171a21}.social-link i{margin-right:8px}.social-link:hover{opacity:1}@media (min-width:768px){.social-links{flex-direction:row;flex-wrap:wrap;justify-content:center}.social-link{margin:10px;width:auto}}
+    </style>
+    <script>
+        function trackVisit(platform) {
+            let count = localStorage.getItem(platform) ? parseInt(localStorage.getItem(platform)) : 0;
+            count++;
+            localStorage.setItem(platform, count);
+            document.getElementById(platform.toLowerCase() + '-count').innerText = count;
+        }
+        window.onload = function() {
+            const platforms = ['Telegram', 'VK', 'Discord', 'Discord Server', 'Twitch', 'YouTube', 'TikTok', 'Steam'];
+            platforms.forEach(platform => {
+                let count = localStorage.getItem(platform) ? localStorage.getItem(platform) : 0;
+                document.getElementById(platform.toLowerCase() + '-count').innerText = count;
+            });
+        };
+    </script>
+</head>
+<body>
+    <h1>Мои Социальные Сети</h1>
+    <div class="social-links">
+        <a href="https://t.me/ваш_профиль" class="social-link telegram" onclick="trackVisit('Telegram')">
+            <i class="fab fa-telegram-plane"></i> Telegram <span id="telegram-count">0</span>
+        </a>
+        <a href="https://vk.com/ваш_профиль" class="social-link vk" onclick="trackVisit('VK')">
+            <i class="fab fa-vk"></i> VK <span id="vk-count">0</span>
+        </a>
+        <a href="https://discord.com/users/ваш_профиль" class="social-link discord" onclick="trackVisit('Discord')">
+            <i class="fab fa-discord"></i> Discord <span id="discord-count">0</span>
+        </a>
+        <a href="https://discord.gg/ваш_сервер" class="social-link discord-server" onclick="trackVisit('Discord Server')">
+            <i class="fab fa-discord"></i> Discord Server <span id="discord-server-count">0</span>
+        </a>
+        <a href="https://www.twitch.tv/ваш_профиль" class="social-link twitch" onclick="trackVisit('Twitch')">
+            <i class="fab fa-twitch"></i> Twitch <span id="twitch-count">0</span>
+        </a>
+        <a href="https://www.youtube.com/c/ваш_канал" class="social-link youtube" onclick="trackVisit('YouTube')">
+            <i class="fab fa-youtube"></i> YouTube <span id="youtube-count">0</span>
+        </a>
+        <a href="https://www.tiktok.com/@ваш_профиль" class="social-link tiktok" onclick="trackVisit('TikTok')">
+            <i class="fab fa-tiktok"></i> TikTok <span id="tiktok-count">0</span>
+        </a>
+        <a href="https://steamcommunity.com/id/ваш_профиль" class="social-link steam" onclick="trackVisit('Steam')">
+            <i class="fab fa-steam"></i> Steam <span id="steam-count">0</span>
+        </a>
+    </div>
+</body>
+</html>
